@@ -1,0 +1,39 @@
+{
+  "producto": {
+    "id": "caja-eaton-fuller-4205",
+    "slug": "caja-de-velocidades-eaton-fuller-4205",
+    "nombre": "Caja de velocidades Eaton Fuller 4205",
+    "codigo": "EF-4205",
+    "numeroParte": "4205",
+    "marca": "Eaton Fuller",
+    "categoria": "cajas-de-velocidades",
+    "tipo": "original",
+    "aplicacion": [
+      "Mercedes Benz 1620 / 1634",
+      "Ford Cargo 1722 / 1730",
+      "Volkswagen Constellation 17.220"
+    ],
+    "marcasCamion": ["Mercedes Benz", "Ford", "Volkswagen"],
+    "disponibilidad": "en-stock",
+    "descripcion": "Caja de velocidades manual Eaton Fuller 4205 de 5 velocidades. Disponible completa o por repuestos: carcazas, engranajes, sincronizados y ejes.",
+    "imagenes": [
+      "/img/productos/caja-eaton-fuller-4205-1.webp",
+      "/img/productos/caja-eaton-fuller-4205-2.webp"
+    ],
+    "despiece": "/img/productos/caja-eaton-fuller-4205-despiece.webp",
+    "destacado": true,
+    "relacionados": [
+      "kit-embrague-eaton-430",
+      "sincronizado-eaton-fuller-4205"
+    ]
+  },
+  "notasDeCampos": {
+    "tipo": "original | alternativo",
+    "disponibilidad": "en-stock | consultar | sin-stock",
+    "categoria": "slug de categoría; ver lista en el doc de diseño",
+    "aplicacion": "textos legibles por humano, lo que busca el mecánico",
+    "marcasCamion": "para el filtro 'marca de camión'",
+    "despiece": "opcional; si no hay, no se muestra el botón de despiece",
+    "relacionados": "ids de otros productos; opcional"
+  }
+}
