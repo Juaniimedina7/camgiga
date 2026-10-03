@@ -5,7 +5,7 @@ import { mediaUrl, mediaAlt } from '../../../../lib/media'
 import { ProductCard } from '../../../../components/ProductCard'
 import { WhatsAppButton } from '../../../../components/WhatsAppButton'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 type Params = { params: Promise<{ slug: string }> }
 

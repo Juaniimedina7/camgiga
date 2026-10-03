@@ -8,7 +8,7 @@ import { ProductCard } from '../../../../components/ProductCard'
 import { CONTACTO } from '../../../../lib/constants'
 import type { Product } from '../../../../payload-types'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 type Params = { params: Promise<{ slug: string }> }
 

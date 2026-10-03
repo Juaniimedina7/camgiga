@@ -322,6 +322,123 @@ img { max-width: 100%; display: block; }
 .mt-1 { margin-top: 0.5rem; } .mt-2 { margin-top: 1rem; } .mb-2 { margin-bottom: 1rem; }
 .row-between { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
+/* ---------- Hero eyebrow ---------- */
+.hero__eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+
+/* ---------- Banda de stock ---------- */
+.band { background: var(--accent); color: #fff; }
+.band__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.5rem; flex-wrap: wrap; }
+.band__title { color: #fff; margin: 0; }
+.band__text { color: rgba(255,255,255,0.92); margin: 0.25rem 0 0; max-width: 60ch; }
+.band .btn--wa { background: #fff; color: var(--accent-strong); }
+.band .btn--wa:hover { background: rgba(255,255,255,0.9); }
+
+/* ---------- Quiénes somos ---------- */
+.about { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 900px) { .about { grid-template-columns: 1.4fr 1fr; gap: 3rem; } }
+.about__brands { border-left: 3px solid var(--accent); padding-left: 1.25rem; }
+
+/* ---------- Contador de números ---------- */
+.stats-band { background: var(--brand); color: #fff; padding-block: clamp(2rem, 1.5rem + 2vw, 3rem); }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align: center; }
+@media (min-width: 700px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat { display: flex; flex-direction: column; gap: 0.25rem; }
+.stat__num { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); color: var(--accent); line-height: 1; }
+.stat__label { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+
+/* ============================================================
+   MICROANIMACIONES — CSS nativo, sin JS. Progresivo (@supports),
+   respeta prefers-reduced-motion.
+   ============================================================ */
+
+/* Stagger de carga del hero */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__eyebrow, .hero h1, .hero__sub, .hero__search {
+    animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero h1 { animation-delay: 0.06s; }
+  .hero__sub { animation-delay: 0.12s; }
+  .hero__search { animation-delay: 0.18s; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* Scroll-reveal nativo (Chrome/Edge); otros navegadores muestran el contenido igual */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+
+/* Hover pulido: botón primario y wa con leve elevación */
+.btn--primary, .btn--wa { box-shadow: 0 1px 2px rgba(15,26,36,0.12); }
+.btn--primary:hover, .btn--wa:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+
+/* Nav: subrayado animado */
+.header__nav a { position: relative; }
+.header__nav a::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 2px;
+  background: var(--accent); transition: right 0.25s ease;
+}
+.header__nav a:hover::after { right: 0; }
+
+/* Zoom suave de imagen en tarjetas */
+.product-card__media img, .cat-card__img { transition: transform 0.4s ease; }
+.product-card:hover .product-card__media img, .cat-card:hover .cat-card__img { transform: scale(1.05); }
+
+/* Chip del buscador en hero con glow al hover */
+.search-tab { transition: background 0.2s, border-color 0.2s; }
+
+/* FAB con latido sutil para llamar la atención (una vez) */
+@media (prefers-reduced-motion: no-preference) {
+  .fab { animation: pop 0.4s ease-out 0.6s both; }
+}
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+
+/* ---------- Placeholder de imágenes (hasta cargar las reales) ---------- */
+.ph {
+  position: relative; overflow: hidden;
+  background:
+    repeating-linear-gradient(45deg, var(--surface-alt) 0 12px, #eaeef3 12px 24px);
+  display: grid; place-items: center; color: var(--muted);
+  font-size: 0.85rem; font-weight: 600; border-radius: var(--radius);
+}
+.ph--hero { aspect-ratio: 4/3; }
+.ph--wide { aspect-ratio: 16/9; }
+
+/* ---------- Hero con panel visual ---------- */
+@media (min-width: 900px) {
+  .hero__grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem; align-items: center; }
+}
+.hero__visual { display: none; }
+@media (min-width: 900px) { .hero__visual { display: block; } }
+
+/* ---------- Tira de logos ---------- */
+.logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; align-items: center; }
+@media (min-width: 600px) { .logos { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px) { .logos { grid-template-columns: repeat(6, 1fr); } }
+.logo-ph { aspect-ratio: 5/2; border: 1px solid var(--line); border-radius: var(--radius-sm); display: grid; place-items: center; color: var(--muted); font-weight: 600; font-size: 0.8rem; background: var(--surface); }
+
+/* ---------- Reseñas ---------- */
+.reviews-head { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.stars { color: var(--accent); font-size: 1.2rem; letter-spacing: 0.1em; }
+.review-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.review-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.review-card__text { margin: 0; }
+.review-card__author { font-weight: 600; }
+.review-card__empresa { color: var(--ink-soft); font-size: 0.88rem; }
+.grid--reviews { grid-template-columns: 1fr; }
+@media (min-width: 700px) { .grid--reviews { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .grid--reviews { grid-template-columns: repeat(4, 1fr); } }
+
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }

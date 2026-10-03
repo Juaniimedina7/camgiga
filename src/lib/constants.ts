@@ -33,6 +33,16 @@ export const MARCAS_REPUESTO = [
   'Sachs', 'ZF', 'INA', 'Clark', 'Gran Sasso', 'Bepo', 'Cinpal', 'Tifec',
 ] as const
 
+// Reseñas (placeholder — reemplazar por reales / link a Google cuando estén).
+export const RESENIAS = [
+  { autor: 'Hernán Gómez', empresa: 'Taller Gómez · San Justo', texto: 'Conseguí una caja Eaton que no encontraba en ningún lado. Me la mandaron al interior en dos días. Un lujo.' },
+  { autor: 'Transporte El Rayo', empresa: 'Flota · Córdoba', texto: 'Les compramos repuestos de diferencial para toda la flota. Siempre tienen stock y responden al toque por WhatsApp.' },
+  { autor: 'Marcelo Ríos', empresa: 'Mecánico · Lanús', texto: 'Precios acomodados y te asesoran bien. Si no tienen la pieza, te la consiguen. Hace años que les compro.' },
+  { autor: 'Repuestera del Sur', empresa: 'Casa de repuestos · La Plata', texto: 'Proveedores de confianza. Originales y alternativos, lo que necesites. Cumplen con los tiempos de entrega.' },
+] as const
+
+export const RESENIAS_RATING = { puntaje: 4.8, cantidad: 126 } as const
+
 export const DISPONIBILIDAD_OPTIONS = [
   { label: 'En stock', value: 'en-stock' },
   { label: 'Consultar disponibilidad', value: 'consultar' },
