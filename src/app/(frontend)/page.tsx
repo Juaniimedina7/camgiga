@@ -2,9 +2,8 @@ import Link from 'next/link'
 import { getCategories, getProducts } from '../../lib/data'
 import { CategoryCard } from '../../components/CategoryCard'
 import { ProductCard } from '../../components/ProductCard'
-import { SearchBar } from '../../components/SearchBar'
 import { WhatsAppButton } from '../../components/WhatsAppButton'
-import { MARCAS_REPUESTO, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
+import { CATEGORIAS_FALLBACK, MARCAS_REPUESTO, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
 
 // ISR: se renderiza una vez y se sirve cacheado desde el CDN.
 // Escala a cualquier cantidad de visitas sin golpear la base en cada request.
@@ -16,32 +15,40 @@ export default async function HomePage() {
     getProducts({ destacado: true, limit: 8 }).then((r) => r.docs).catch(() => []),
   ])
 
+  const cats = categories.length ? categories : CATEGORIAS_FALLBACK
   const logos = MARCAS_REPUESTO.slice(0, 6)
   const estrellas = '★'.repeat(Math.round(RESENIAS_RATING.puntaje))
 
   return (
     <>
-      {/* HERO */}
+      {/* HERO — tesis: el eslogan de la empresa, grande y condensado */}
       <section className="hero">
-        <div className="container hero__grid">
-          <div>
-            <p className="hero__eyebrow">CAMGIGA SRL · Lanús, Buenos Aires</p>
-            <h1>Más de 25 años potenciando tu camino.</h1>
-            <p className="hero__sub">
-              Especialistas en tren motriz para camiones, maquinaria agrícola y colectivos.
-              Primeras marcas, amplio stock y envíos a todo el país.
-            </p>
-            <div className="hero__search">
-              <SearchBar hero />
-              <div className="search-tabs" aria-hidden="true">
-                <span className="search-tab search-tab--on">Por camión</span>
-                <span className="search-tab">Por caja o diferencial</span>
-                <span className="search-tab">Por número de parte</span>
-              </div>
+        <div className="hero__bg" aria-hidden="true" />
+        <div className="hero__grain" aria-hidden="true" />
+        <div className="container hero__inner">
+          <p className="hero__eyebrow"><span className="hero__dot" />Tren motriz · 25 años · Lanús, Buenos Aires</p>
+          <h1 className="hero__title">
+            <span>Tenemos la pieza</span>
+            <span>que nadie</span>
+            <span className="hero__accent">consiguió.</span>
+          </h1>
+          <p className="hero__sub">
+            Cajas, diferenciales y embragues para camiones, maquinaria agrícola y colectivos.
+            Primeras marcas, amplio stock y envíos a todo el país.
+          </p>
+
+          {/* Buscador de repuestos */}
+          <div className="finder">
+            <div className="finder__tabs" aria-hidden="true">
+              <span className="finder__tab finder__tab--on">Por camión</span>
+              <span className="finder__tab">Por caja o diferencial</span>
+              <span className="finder__tab">Por número de parte</span>
             </div>
-          </div>
-          <div className="hero__visual">
-            <div className="ph ph--hero">Imagen (próximamente)</div>
+            <form className="finder__form" action="/catalogo" method="get" role="search">
+              <input className="finder__input" type="text" name="q" placeholder="Buscá: Eaton 4205, diferencial Meritor, embrague 430…" aria-label="Buscar repuesto" autoComplete="off" />
+              <button className="btn btn--primary btn--lg" type="submit">Buscar repuesto</button>
+            </form>
+            <p className="finder__hint">+175 repuestos en catálogo · Consultá cualquiera por WhatsApp</p>
           </div>
         </div>
       </section>
@@ -64,15 +71,11 @@ export default async function HomePage() {
             <h2>¿Qué estás buscando?</h2>
             <Link className="btn btn--outline" href="/catalogo">Ver todo el catálogo</Link>
           </div>
-          {categories.length ? (
-            <div className="grid grid--cats">
-              {categories.map((c) => (
-                <CategoryCard key={c.id} category={c} />
-              ))}
-            </div>
-          ) : (
-            <p className="muted">Cargá categorías desde el panel de administración para verlas acá.</p>
-          )}
+          <div className="grid grid--cats">
+            {cats.map((c) => (
+              <CategoryCard key={c.slug} category={c} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -125,22 +128,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* RESEÑAS */}
-      <section className="section reveal">
-        <div className="container">
-          <div className="reviews-head">
-            <h2 style={{ margin: 0 }}>Lo que dicen nuestros clientes</h2>
-            <span className="stars" aria-hidden="true">{estrellas}</span>
-            <span className="muted">{RESENIAS_RATING.puntaje} · {RESENIAS_RATING.cantidad} reseñas</span>
-          </div>
-          <div className="grid grid--reviews">
+      {/* RESEÑAS — bloque de rating + riel horizontal */}
+      <section className="section section--alt reveal">
+        <div className="container reviews">
+          <aside className="reviews__agg">
+            <p className="eyebrow">Reseñas</p>
+            <div className="reviews__score">{RESENIAS_RATING.puntaje.toFixed(1).replace('.', ',')}</div>
+            <div className="stars stars--lg" aria-hidden="true">{estrellas}</div>
+            <p className="reviews__meta">{RESENIAS_RATING.cantidad} reseñas de clientes de todo el país</p>
+            <WhatsAppButton mensaje="Hola CAMGIGA, quería hacer una consulta.">Sumate a ellos</WhatsAppButton>
+          </aside>
+          <div className="reviews__rail">
             {RESENIAS.map((r) => (
               <figure key={r.autor} className="review-card">
-                <span className="stars" aria-hidden="true">★★★★★</span>
-                <blockquote className="review-card__text">“{r.texto}”</blockquote>
-                <figcaption>
-                  <div className="review-card__author">{r.autor}</div>
-                  <div className="review-card__empresa">{r.empresa}</div>
+                <span className="review-card__quote" aria-hidden="true">”</span>
+                <blockquote className="review-card__text">{r.texto}</blockquote>
+                <figcaption className="review-card__who">
+                  <span className="review-card__avatar" aria-hidden="true">{r.autor.charAt(0)}</span>
+                  <span>
+                    <span className="review-card__author">{r.autor}</span>
+                    <span className="review-card__empresa">{r.empresa}</span>
+                  </span>
                 </figcaption>
               </figure>
             ))}

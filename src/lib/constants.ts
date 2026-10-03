@@ -33,6 +33,16 @@ export const MARCAS_REPUESTO = [
   'Sachs', 'ZF', 'INA', 'Clark', 'Gran Sasso', 'Bepo', 'Cinpal', 'Tifec',
 ] as const
 
+// Categorías de respaldo para el Inicio (hasta que se carguen en el CMS).
+export const CATEGORIAS_FALLBACK = [
+  { nombre: 'Cajas de velocidades', slug: 'cajas-de-velocidades' },
+  { nombre: 'Diferenciales', slug: 'diferenciales' },
+  { nombre: 'Embragues', slug: 'embragues' },
+  { nombre: 'Palieres', slug: 'palieres' },
+  { nombre: 'Frenos', slug: 'frenos' },
+  { nombre: 'Tanques de combustible', slug: 'tanques-de-combustible' },
+] as const
+
 // Reseñas (placeholder — reemplazar por reales / link a Google cuando estén).
 export const RESENIAS = [
   { autor: 'Hernán Gómez', empresa: 'Taller Gómez · San Justo', texto: 'Conseguí una caja Eaton que no encontraba en ningún lado. Me la mandaron al interior en dos días. Un lujo.' },

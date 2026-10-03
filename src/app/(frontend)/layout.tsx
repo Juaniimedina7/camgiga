@@ -4,6 +4,7 @@ import { Barlow_Semi_Condensed, Inter } from 'next/font/google'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { WhatsAppFab } from '../../components/WhatsAppFab'
+import { ScrollReveal } from '../../components/ScrollReveal'
 import './globals.css'
 
 const display = Barlow_Semi_Condensed({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <WhatsAppFab />
+        <ScrollReveal />
       </body>
     </html>
   )
