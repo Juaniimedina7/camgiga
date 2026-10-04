@@ -29,7 +29,7 @@ export default async function HomePage() {
         <div className="hero__bg" aria-hidden="true" />
         <div className="hero__grain" aria-hidden="true" />
         <div className="container hero__inner">
-          <p className="hero__eyebrow"><span className="hero__dot" />Tren motriz · 25 años · Lanús, Buenos Aires</p>
+          <p className="hero__eyebrow"><span className="hero__dot" />Repuestos · 25 años · Lanús, Buenos Aires</p>
           <h1 className="hero__title">
             <span>Tenemos la pieza</span>
             <span>que nadie</span>
@@ -89,7 +89,7 @@ export default async function HomePage() {
             <p className="eyebrow">Quiénes somos</p>
             <h2>Desde hace más de 25 años, sinónimo de confianza en repuestos.</h2>
             <p className="lead">
-              Importamos, exportamos y distribuimos repuestos originales y alternativos de las
+              Importamos y distribuimos repuestos originales y alternativos de las
               primeras marcas. Trabajamos para que los vehículos no paren.
             </p>
             <div className="mt-2" style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
