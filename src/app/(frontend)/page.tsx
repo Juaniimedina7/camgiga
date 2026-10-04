@@ -3,6 +3,8 @@ import { getCategories, getProducts } from '../../lib/data'
 import { CategoryCard } from '../../components/CategoryCard'
 import { ProductCard } from '../../components/ProductCard'
 import { WhatsAppButton } from '../../components/WhatsAppButton'
+import { SmartImg } from '../../components/SmartImg'
+import { brandLogo, heroPreview } from '../../lib/preview'
 import { CATEGORIAS_FALLBACK, MARCAS_REPUESTO, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
 
 // ISR: se renderiza una vez y se sirve cacheado desde el CDN.
@@ -23,6 +25,7 @@ export default async function HomePage() {
     <>
       {/* HERO — tesis: el eslogan de la empresa, grande y condensado */}
       <section className="hero">
+        <img className="hero__photo" src={heroPreview()} alt="" aria-hidden="true" />
         <div className="hero__bg" aria-hidden="true" />
         <div className="hero__grain" aria-hidden="true" />
         <div className="container hero__inner">
@@ -97,7 +100,11 @@ export default async function HomePage() {
           <div className="about__brands">
             <p className="eyebrow">Trabajamos las primeras marcas</p>
             <div className="logos">
-              {logos.map((m) => <div key={m} className="logo-ph">{m}</div>)}
+              {logos.map((m) => (
+                <div key={m} className="logo-ph">
+                  <SmartImg src={brandLogo(m)} alt={m} className="logo-img" fallback={<span>{m}</span>} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -128,30 +135,31 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* RESEÑAS — bloque de rating + riel horizontal */}
+      {/* RESEÑAS — rating arriba + carrusel con autoscroll (2 visibles) */}
       <section className="section section--alt reveal">
-        <div className="container reviews">
-          <aside className="reviews__agg">
-            <p className="eyebrow">Reseñas</p>
-            <div className="reviews__score">{RESENIAS_RATING.puntaje.toFixed(1).replace('.', ',')}</div>
-            <div className="stars stars--lg" aria-hidden="true">{estrellas}</div>
-            <p className="reviews__meta">{RESENIAS_RATING.cantidad} reseñas de clientes de todo el país</p>
-            <WhatsAppButton mensaje="Hola CAMGIGA, quería hacer una consulta.">Sumate a ellos</WhatsAppButton>
-          </aside>
-          <div className="reviews__rail">
-            {RESENIAS.map((r) => (
-              <figure key={r.autor} className="review-card">
-                <span className="review-card__quote" aria-hidden="true">”</span>
-                <blockquote className="review-card__text">{r.texto}</blockquote>
-                <figcaption className="review-card__who">
-                  <span className="review-card__avatar" aria-hidden="true">{r.autor.charAt(0)}</span>
-                  <span>
-                    <span className="review-card__author">{r.autor}</span>
-                    <span className="review-card__empresa">{r.empresa}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+        <div className="container">
+          <div className="reviews__header">
+            <p className="eyebrow" style={{ margin: 0 }}>Reseñas</p>
+            <span className="reviews__score">{RESENIAS_RATING.puntaje.toFixed(1).replace('.', ',')}</span>
+            <span className="stars stars--lg" aria-hidden="true">{estrellas}</span>
+            <span className="reviews__meta">{RESENIAS_RATING.cantidad} reseñas de clientes de todo el país</span>
+          </div>
+          <div className="marquee" aria-label="Reseñas de clientes">
+            <div className="marquee__track">
+              {[...RESENIAS, ...RESENIAS].map((r, i) => (
+                <figure key={i} className="review-card" aria-hidden={i >= RESENIAS.length}>
+                  <span className="review-card__quote" aria-hidden="true">”</span>
+                  <blockquote className="review-card__text">{r.texto}</blockquote>
+                  <figcaption className="review-card__who">
+                    <span className="review-card__avatar" aria-hidden="true">{r.autor.charAt(0)}</span>
+                    <span>
+                      <span className="review-card__author">{r.autor}</span>
+                      <span className="review-card__empresa">{r.empresa}</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
       </section>

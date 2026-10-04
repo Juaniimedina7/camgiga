@@ -1,24 +1,23 @@
 import Link from 'next/link'
 import type { Product } from '../payload-types'
 import { mediaUrl, mediaAlt } from '../lib/media'
+import { productPreview } from '../lib/preview'
+import { SmartImg } from './SmartImg'
 import { AvailabilityBadge } from './AvailabilityBadge'
 import { whatsappLink } from '../lib/whatsapp'
 import { WhatsAppIcon } from './icons'
 
 export function ProductCard({ product }: { product: Product }) {
   const first = Array.isArray(product.imagenes) ? product.imagenes[0] : product.imagenes
-  const img = mediaUrl(first, 'card')
+  const cmsImg = mediaUrl(first, 'card')
+  const img = cmsImg || productPreview(product.slug || String(product.id))
   const marca = typeof product.marca === 'object' && product.marca ? product.marca.nombre : null
   const wa = whatsappLink({ nombre: product.nombre, codigo: product.codigo ?? undefined })
 
   return (
     <div className="product-card">
       <Link href={`/producto/${product.slug}`} className="product-card__media" aria-label={product.nombre}>
-        {img ? (
-          <img src={img} alt={mediaAlt(first, product.nombre)} loading="lazy" />
-        ) : (
-          <span className="product-card__ph">Sin foto</span>
-        )}
+        <SmartImg src={img} alt={mediaAlt(first, product.nombre)} className={cmsImg ? undefined : 'prev-img'} fallback={<span className="product-card__ph">Sin foto</span>} />
       </Link>
       <div className="product-card__body">
         <Link href={`/producto/${product.slug}`} className="product-card__name">
