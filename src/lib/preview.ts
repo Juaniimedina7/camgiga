@@ -22,20 +22,24 @@ export function heroPreview(): string {
   return 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=70'
 }
 
-// Logos de marca vía Clearbit (devuelve el logo real de la empresa).
+// Logos locales (public/logos). Fallback a Clearbit para marcas sin archivo.
+const BRAND_LOGO: Record<string, string> = {
+  Eaton: '/logos/eaton.png',
+  Fuller: '/logos/fuller.png',
+  Spicer: '/logos/spicer.png',
+  Dana: '/logos/dana.png',
+  Meritor: '/logos/meritor.png',
+  Rockwell: '/logos/rockwell.png',
+}
+
 const BRAND_DOMAIN: Record<string, string> = {
-  Eaton: 'eaton.com',
-  Fuller: 'eaton.com',
-  Spicer: 'dana.com',
-  Dana: 'dana.com',
-  Meritor: 'meritor.com',
-  Rockwell: 'meritor.com',
   ZF: 'zf.com',
   Sachs: 'zf.com',
   INA: 'schaeffler.com',
 }
 
 export function brandLogo(name: string): string {
+  if (BRAND_LOGO[name]) return BRAND_LOGO[name]
   const d = BRAND_DOMAIN[name]
   return d ? `https://logo.clearbit.com/${d}?size=120` : ''
 }

@@ -463,8 +463,8 @@ img { max-width: 100%; display: block; }
 @media (min-width: 500px) { .logos { grid-template-columns: repeat(3, 1fr); } }
 .logo-ph { aspect-ratio: 5/2; border: 1px solid var(--line); border-radius: var(--radius-sm); display: grid; place-items: center; color: var(--ink-soft); font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; background: var(--surface); transition: border-color 0.15s, color 0.15s; }
 .logo-ph:hover { border-color: var(--accent); color: var(--ink); }
-.logo-img { max-height: 58%; max-width: 78%; object-fit: contain; filter: grayscale(1); opacity: 0.8; transition: filter 0.2s, opacity 0.2s; }
-.logo-ph:hover .logo-img { filter: none; opacity: 1; }
+.logo-img { max-height: 70%; max-width: 85%; object-fit: contain; transition: transform 0.2s; }
+.logo-ph:hover .logo-img { transform: scale(1.04); }
 
 /* ---------- Reseñas (rating arriba + carrusel con autoscroll) ---------- */
 .reviews__header { display: flex; align-items: center; gap: 0.5rem 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
