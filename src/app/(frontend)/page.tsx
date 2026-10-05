@@ -5,7 +5,7 @@ import { ProductCard } from '../../components/ProductCard'
 import { WhatsAppButton } from '../../components/WhatsAppButton'
 import { SmartImg } from '../../components/SmartImg'
 import { brandLogo, heroPreview } from '../../lib/preview'
-import { CATEGORIAS_FALLBACK, MARCAS_REPUESTO, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
+import { CATEGORIAS_FALLBACK, MARCAS_DESTACADAS, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
 
 // ISR: se renderiza una vez y se sirve cacheado desde el CDN.
 // Escala a cualquier cantidad de visitas sin golpear la base en cada request.
@@ -18,7 +18,7 @@ export default async function HomePage() {
   ])
 
   const cats = categories.length ? categories : CATEGORIAS_FALLBACK
-  const logos = MARCAS_REPUESTO.slice(0, 6)
+  const logos = MARCAS_DESTACADAS
   const estrellas = '★'.repeat(Math.round(RESENIAS_RATING.puntaje))
 
   return (

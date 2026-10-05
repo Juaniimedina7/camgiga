@@ -30,11 +30,14 @@ const BRAND_LOGO: Record<string, string> = {
   Dana: '/logos/dana.png',
   Meritor: '/logos/meritor.png',
   Rockwell: '/logos/rockwell.png',
+  Sachs: '/logos/sachs.png',
+  ZF: '/logos/zf.png',
+  Cinpal: '/logos/cinpal.png',
+  Euroricambi: '/logos/euroricambi.png',
+  Maxgear: '/logos/maxgear.png',
 }
 
 const BRAND_DOMAIN: Record<string, string> = {
-  ZF: 'zf.com',
-  Sachs: 'zf.com',
   INA: 'schaeffler.com',
 }
 

@@ -49,9 +49,15 @@ export default function ContactoPage() {
               </a>
               <p><b>Email:</b> <a href={`mailto:${CONTACTO.email}`}>{CONTACTO.email}</a></p>
               <p><b>Dirección:</b><br />{CONTACTO.direccion}</p>
-              <p><b>Horarios:</b> a confirmar</p>
-              <div style={{ aspectRatio: '16/9', background: 'var(--surface-alt)', borderRadius: 'var(--radius)', display: 'grid', placeItems: 'center', color: 'var(--muted)', border: '1px solid var(--line)' }}>
-                Mapa (placeholder)
+              <p><b>Horarios:</b> Lunes a viernes de 8 a 17 hs</p>
+              <div style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--line)' }}>
+                <iframe
+                  title="Ubicación de CAMGIGA"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(CONTACTO.direccion)}&output=embed`}
+                  style={{ border: 0, width: '100%', height: '100%' }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </aside>

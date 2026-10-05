@@ -33,6 +33,12 @@ export const MARCAS_REPUESTO = [
   'Sachs', 'ZF', 'INA', 'Clark', 'Gran Sasso', 'Bepo', 'Cinpal', 'Tifec',
 ] as const
 
+// Marcas que se muestran con logo en el muro (Inicio y Nosotros usan la misma lista).
+export const MARCAS_DESTACADAS = [
+  'Eaton', 'Fuller', 'Spicer', 'Dana', 'Meritor', 'Rockwell',
+  'Sachs', 'ZF', 'Cinpal', 'Euroricambi', 'Maxgear',
+] as const
+
 // Categorías de respaldo para el Inicio (hasta que se carguen en el CMS).
 export const CATEGORIAS_FALLBACK = [
   { nombre: 'Cajas de velocidades', slug: 'cajas-de-velocidades' },

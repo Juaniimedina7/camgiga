@@ -197,8 +197,10 @@ img { max-width: 100%; display: block; }
 /* ---------- Hero ---------- */
 .hero {
   position: relative; isolation: isolate; overflow: hidden; color: #fff;
+  background: var(--brand); /* fondo base (en el Inicio lo cubre la foto/gradiente) */
   padding-block: clamp(2.75rem, 2rem + 7vw, 6.5rem) clamp(2rem, 1.5rem + 3vw, 3.5rem);
 }
+.hero h1 { color: #fff; }
 .hero__photo { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; }
 .hero__bg {
   position: absolute; inset: 0; z-index: -2;

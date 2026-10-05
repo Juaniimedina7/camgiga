@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { WhatsAppButton } from '../../../components/WhatsAppButton'
-import { MARCAS_REPUESTO } from '../../../lib/constants'
+import { SmartImg } from '../../../components/SmartImg'
+import { brandLogo } from '../../../lib/preview'
+import { MARCAS_DESTACADAS } from '../../../lib/constants'
 
 export const metadata: Metadata = {
   title: 'Nosotros — 25 años en repuestos para camiones',
@@ -49,7 +51,13 @@ export default function NosotrosPage() {
       <section className="section">
         <div className="container">
           <h2 className="section__title">Marcas que trabajamos</h2>
-          <div className="brands">{MARCAS_REPUESTO.map((m) => <span key={m}>{m}</span>)}</div>
+          <div className="logos">
+            {MARCAS_DESTACADAS.map((m) => (
+              <div key={m} className="logo-ph">
+                <SmartImg src={brandLogo(m)} alt={m} className="logo-img" fallback={<span>{m}</span>} />
+              </div>
+            ))}
+          </div>
           <div className="cta-block" style={{ marginTop: '2rem' }}>
             <h2>¿Buscás una pieza?</h2>
             <p>Escribinos y te ayudamos a encontrarla.</p>
