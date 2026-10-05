@@ -51,12 +51,14 @@ export default function NosotrosPage() {
       <section className="section">
         <div className="container">
           <h2 className="section__title">Marcas que trabajamos</h2>
-          <div className="logos">
-            {MARCAS_DESTACADAS.map((m) => (
-              <div key={m} className="logo-ph">
-                <SmartImg src={brandLogo(m)} alt={m} className="logo-img" fallback={<span>{m}</span>} />
-              </div>
-            ))}
+          <div className="marquee" aria-label="Marcas que trabajamos">
+            <div className="marquee__track">
+              {[...MARCAS_DESTACADAS, ...MARCAS_DESTACADAS].map((m, i) => (
+                <div key={i} className="logo-ph logo-ph--marquee" aria-hidden={i >= MARCAS_DESTACADAS.length}>
+                  <SmartImg src={brandLogo(m)} alt={m} className="logo-img" fallback={<span>{m}</span>} />
+                </div>
+              ))}
+            </div>
           </div>
           <div className="cta-block" style={{ marginTop: '2rem' }}>
             <h2>¿Buscás una pieza?</h2>

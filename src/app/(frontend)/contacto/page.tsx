@@ -49,7 +49,7 @@ export default function ContactoPage() {
               </a>
               <p><b>Email:</b> <a href={`mailto:${CONTACTO.email}`}>{CONTACTO.email}</a></p>
               <p><b>Dirección:</b><br />{CONTACTO.direccion}</p>
-              <p><b>Horarios:</b> Lunes a viernes de 8 a 17 hs</p>
+              <p><b>Horarios:</b> Lunes a viernes de 8 a 17 hs · Sábados de 8 a 14 hs</p>
               <div style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--line)' }}>
                 <iframe
                   title="Ubicación de CAMGIGA"

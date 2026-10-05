@@ -467,6 +467,7 @@ img { max-width: 100%; display: block; }
 .logo-ph:hover { border-color: var(--accent); color: var(--ink); }
 .logo-img { max-height: 70%; max-width: 85%; object-fit: contain; transition: transform 0.2s; }
 .logo-ph:hover .logo-img { transform: scale(1.04); }
+.logo-ph--marquee { flex: 0 0 180px; }
 
 /* ---------- Reseñas (rating arriba + carrusel con autoscroll) ---------- */
 .reviews__header { display: flex; align-items: center; gap: 0.5rem 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
