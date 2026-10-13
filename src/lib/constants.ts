@@ -45,6 +45,7 @@ export const CATEGORIAS_FALLBACK = [
   { nombre: 'Diferenciales', slug: 'diferenciales' },
   { nombre: 'Embragues', slug: 'embragues' },
   { nombre: 'Palieres', slug: 'palieres' },
+  { nombre: 'Radiadores', slug: 'radiadores' },
   { nombre: 'Tanques de combustible', slug: 'tanques-de-combustible' },
 ] as const
 

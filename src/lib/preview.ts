@@ -46,3 +46,18 @@ export function brandLogo(name: string): string {
   const d = BRAND_DOMAIN[name]
   return d ? `https://logo.clearbit.com/${d}?size=120` : ''
 }
+
+// Imágenes reales por categoría (public/products). Se usan en las tarjetas de
+// categoría y como foto de los productos de esa categoría hasta cargar las reales.
+const CATEGORY_IMG: Record<string, string> = {
+  'cajas-de-velocidades': '/products/cajasVelocidades.jpg',
+  diferenciales: '/products/diferencial.png',
+  embragues: '/products/embrague.jpg',
+  palieres: '/products/palier.jpeg',
+  radiadores: '/products/radiador.jpg',
+  'tanques-de-combustible': '/products/tanque.jpg',
+}
+
+export function categoryImg(slug?: string | null): string {
+  return (slug && CATEGORY_IMG[slug]) || ''
+}
