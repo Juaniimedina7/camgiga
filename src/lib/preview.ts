@@ -51,7 +51,7 @@ export function brandLogo(name: string): string {
 // categoría y como foto de los productos de esa categoría hasta cargar las reales.
 const CATEGORY_IMG: Record<string, string> = {
   'cajas-de-velocidades': '/products/cajasVelocidades.jpg',
-  diferenciales: '/products/diferencial.png',
+  diferenciales: '/products/diferencial.jpg',
   embragues: '/products/embrague.jpg',
   palieres: '/products/palier.jpeg',
   radiadores: '/products/radiador.jpg',
