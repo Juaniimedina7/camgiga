@@ -12,7 +12,6 @@ const CATEGORIAS = [
   { nombre: 'Palieres', orden: 40 },
   { nombre: 'Tanques de combustible', orden: 50 },
   { nombre: 'Carrocerías', orden: 60 },
-  { nombre: 'Frenos', orden: 70 },
   { nombre: 'Turbocompresores', orden: 80 },
   { nombre: 'Filtros', orden: 90 },
   { nombre: 'Inyección electrónica', orden: 100 },

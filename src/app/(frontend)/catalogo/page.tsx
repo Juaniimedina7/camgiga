@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
   title: 'Catálogo de repuestos para camiones',
   description:
-    'Buscá entre nuestros repuestos para camiones: cajas, diferenciales, embragues, frenos y más. Originales y alternativos. Consultá por WhatsApp.',
+    'Buscá entre nuestros repuestos para camiones: cajas, diferenciales, embragues y más. Originales y alternativos. Consultá por WhatsApp.',
 }
 
 type SP = { [k: string]: string | string[] | undefined }
