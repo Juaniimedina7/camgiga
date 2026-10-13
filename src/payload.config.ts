@@ -16,9 +16,14 @@ import { Products } from './collections/Products'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-// Vercel/Neon inyecta alguna de estas según el proveedor.
+// Conexión DIRECTA (non-pooling) de Neon: el endpoint pooled (PgBouncer) rompe
+// los prepared statements de Payload/Drizzle en el runtime serverless de Vercel.
 const connectionString =
-  process.env.DATABASE_URI || process.env.POSTGRES_URL || process.env.DATABASE_URL || ''
+  process.env.DATABASE_URI ||
+  process.env.POSTGRES_URL_NON_POOLING ||
+  process.env.POSTGRES_URL ||
+  process.env.DATABASE_URL ||
+  ''
 
 export default buildConfig({
   admin: {
