@@ -19,7 +19,7 @@ export function CategoryCard({ category }: { category: Tile }) {
         <SmartImg
           src={img}
           alt={mediaAlt(category.imagen, category.nombre)}
-          className={`cat-card__img${isPreview ? ' prev-img' : ''}`}
+          className={`cat-card__img cat-img-${category.slug ?? ''}${isPreview ? ' prev-img' : ''}`}
           fallback={<CogIcon className="cat-card__icon" />}
         />
       </span>
