@@ -55,6 +55,9 @@ export default buildConfig({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
       collections: { media: true },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
+      // Sube directo del navegador a Blob: evita el límite de 4.5MB de las
+      // Functions de Vercel (clave para el video).
+      clientUploads: true,
     }),
   ],
 })

@@ -15,12 +15,14 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    // Miniaturas para el panel y tamaños responsive para el sitio.
+    // Miniaturas (solo se generan en subidas server-side; con clientUploads
+    // se usa el original, que ya viene optimizado).
     imageSizes: [
       { name: 'thumbnail', width: 320, height: 320, position: 'centre' },
       { name: 'card', width: 640, height: 640, position: 'centre' },
       { name: 'full', width: 1200, height: 1200, position: 'centre' },
     ],
-    mimeTypes: ['image/*'],
+    // Acepta imágenes y video (p. ej. .mp4 de producto).
+    mimeTypes: ['image/*', 'video/*'],
   },
 }
