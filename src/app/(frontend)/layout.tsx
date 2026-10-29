@@ -7,6 +7,7 @@ import { WhatsAppFab } from '../../components/WhatsAppFab'
 import { ScrollReveal } from '../../components/ScrollReveal'
 import { RedirectToast } from '../../components/RedirectToast'
 import { Analytics } from '@vercel/analytics/next'
+import { siteJsonLd } from '../../lib/jsonld'
 import './globals.css'
 
 const display = Barlow_Semi_Condensed({
@@ -45,6 +46,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`${display.variable} ${body.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />

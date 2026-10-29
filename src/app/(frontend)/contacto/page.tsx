@@ -11,23 +11,6 @@ export const metadata: Metadata = {
     'Contactá a CAMGIGA en Lanús Oeste. WhatsApp, teléfono y email. Repuestos para camiones con envíos a todo el país.',
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AutoPartsStore',
-  name: CONTACTO.nombre,
-  telephone: CONTACTO.telefonoTel,
-  email: CONTACTO.email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Av. Remedios de Escalada de San Martín 2055',
-    addressLocality: 'Lanús Oeste',
-    addressRegion: 'Buenos Aires',
-    addressCountry: 'AR',
-  },
-  areaServed: 'AR',
-  url: 'https://www.camgiga.com.ar',
-}
-
 export default function ContactoPage() {
   return (
     <>
@@ -63,7 +46,6 @@ export default function ContactoPage() {
           />
         </div>
       </div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </section>
     </>
   )

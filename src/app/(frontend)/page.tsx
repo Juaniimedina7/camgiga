@@ -41,7 +41,7 @@ export default async function HomePage() {
         <div className="container band__inner">
           <div>
             <h2 className="band__title">Amplio stock permanente</h2>
-            <p className="band__text">Cajas de velocidades, diferenciales, embragues, palieres y mucho más. Originales y alternativos.</p>
+            <p className="band__text">Repuestos para camiones en Lanús: cajas de velocidades, diferenciales, embragues, palieres y mucho más. Originales y alternativos, con envíos a todo el país.</p>
           </div>
           <WhatsAppButton lg mensaje="Hola CAMGIGA, quería consultar por disponibilidad de stock.">Consultanos</WhatsAppButton>
         </div>
