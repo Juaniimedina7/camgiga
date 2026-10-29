@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     siteName: 'CAMGIGA SRL',
   },
+  icons: {
+    icon: '/logos/logo/camgiga_favicon_transparente.png',
+    apple: '/logos/logo/camgiga_favicon_transparente.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

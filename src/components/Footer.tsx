@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer__grid">
         <div>
-          <div className="footer__logo">CAM<span>GIGA</span></div>
+          <img src="/logos/logo/camgiga_logo_transparente.png" alt="CAMGIGA" className="footer__logo-img" />
           <p className="mt-1" style={{ maxWidth: '40ch' }}>
             Repuestos para camiones, maquinaria agrícola y transporte de pasajeros. Más de 25 años.
             Envíos a todo el país.

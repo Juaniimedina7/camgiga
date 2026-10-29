@@ -22,7 +22,9 @@ export function Header() {
     <header className="header">
       <div className="container">
         <div className="header__bar">
-          <Link href="/" className="header__logo">CAM<span>GIGA</span></Link>
+          <Link href="/" className="header__logo" aria-label="CAMGIGA — inicio">
+            <img src="/logos/logo/camgiga_logo_transparente.png" alt="CAMGIGA — Calidad en repuestos" className="header__logo-img" />
+          </Link>
 
           <nav className="header__nav">
             {NAV.map((n) => (
