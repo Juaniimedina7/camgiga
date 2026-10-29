@@ -24,6 +24,8 @@ function PartsFinder({ hint }: { hint?: string }) {
 export function HeroKinetic({ hint }: { hint?: string }) {
   return (
     <section className="hv hv3">
+      <img className="hv3__photo" src={heroPreview()} alt="" aria-hidden="true" />
+      <div className="hv3__overlay" aria-hidden="true" />
       <div className="container">
         <h1 className="hv3__title">
           La pieza<br />que <span className="mark">nadie</span><br />consiguió.
@@ -32,9 +34,6 @@ export function HeroKinetic({ hint }: { hint?: string }) {
           Tren motriz para camiones, maquinaria agrícola y colectivos. 25 años, primeras marcas, envíos a todo el país.
         </p>
         <PartsFinder hint={hint} />
-        <div className="hv3__strip">
-          <img className="hv3__img" src={heroPreview()} alt="Repuestos para camiones — CAMGIGA" />
-        </div>
       </div>
     </section>
   )

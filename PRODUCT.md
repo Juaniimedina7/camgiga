@@ -16,7 +16,7 @@ Sitio de CAMGIGA SRL, casa de repuestos para camiones con más de 25 años. Obje
 
 ## Positioning
 
-Especialistas en **tren motriz** (cajas de velocidades, diferenciales, embragues) con amplio stock de primeras marcas, originales y alternativos, importación/exportación y envíos a todo el país. Gancho: "tienen la pieza que otros no consiguen". Base en Lanús Oeste, GBA.
+Su fuerte es el **tren motriz** (cajas de velocidades, diferenciales, embragues) — lo que más venden, sin presentarse como "especialistas" —, con amplio stock de primeras marcas, originales y alternativos, importación directa (no exportan) y envíos a todo el país. Gancho: "tienen la pieza que otros no consiguen". Base en Lanús Oeste, GBA.
 
 ## Operating Context
 

@@ -9,7 +9,7 @@ import { MARCAS_DESTACADAS } from '../../../lib/constants'
 export const metadata: Metadata = {
   title: 'Nosotros — 25 años en repuestos para camiones',
   description:
-    'CAMGIGA SRL, empresa argentina con más de 25 años en repuestos para camiones. Importación, exportación, primeras marcas y envíos a todo el país.',
+    'CAMGIGA SRL, empresa argentina con más de 25 años en repuestos para camiones. Importación directa, primeras marcas y envíos a todo el país.',
 }
 
 export default function NosotrosPage() {
@@ -17,22 +17,22 @@ export default function NosotrosPage() {
     <>
       <PageHero
         title={<>Más de 25 años consiguiendo la pieza que <span className="mark">otros no tienen</span>.</>}
-        sub="CAMGIGA SRL es una empresa argentina especializada en tren motriz para camiones, maquinaria agrícola y transporte de pasajeros."
+        sub="CAMGIGA SRL es una empresa argentina de repuestos para camiones, maquinaria agrícola y transporte de pasajeros, con fuerte en tren motriz."
       />
 
       <section className="section">
         <div className="container about">
           <div>
-            <h2>Especialistas en tren motriz, hace más de 25 años.</h2>
+            <h2>Tren motriz y mucho más, hace más de 25 años.</h2>
           </div>
           <div className="stack">
             <p>
-              Importamos, exportamos y distribuimos repuestos originales y alternativos de las
+              Importamos y distribuimos repuestos originales y alternativos de las
               primeras marcas. Trabajamos para que los vehículos no paren.
             </p>
             <p>
-              Somos especialistas en cajas de velocidades, diferenciales y embragues, y cubrimos una
-              línea completa de repuestos para camiones y transporte. Amplio stock y envíos a todo el país.
+              Lo que más trabajamos son cajas de velocidades, diferenciales y embragues, y además
+              cubrimos una línea completa de repuestos para camiones y transporte. Amplio stock y envíos a todo el país.
             </p>
           </div>
         </div>
@@ -41,9 +41,9 @@ export default function NosotrosPage() {
       <section className="section section--alt">
         <div className="container">
           <div className="trust">
-            <div className="trust__item"><span className="trust__ic">✓</span><div><b>Especialistas en tren motriz</b><br /><span className="muted">Cajas, diferenciales y embragues.</span></div></div>
+            <div className="trust__item"><span className="trust__ic">✓</span><div><b>Tren motriz</b><br /><span className="muted">Cajas, diferenciales y embragues: lo que más trabajamos.</span></div></div>
             <div className="trust__item"><span className="trust__ic">✓</span><div><b>Stock amplio y permanente</b><br /><span className="muted">La pieza que nadie consiguió.</span></div></div>
-            <div className="trust__item"><span className="trust__ic">✓</span><div><b>Importación y exportación</b><br /><span className="muted">Originales y alternativos.</span></div></div>
+            <div className="trust__item"><span className="trust__ic">✓</span><div><b>Importación directa</b><br /><span className="muted">Originales y alternativos.</span></div></div>
             <div className="trust__item"><span className="trust__ic">✓</span><div><b>Envíos a todo el país</b><br /><span className="muted">Estés donde estés.</span></div></div>
           </div>
         </div>
