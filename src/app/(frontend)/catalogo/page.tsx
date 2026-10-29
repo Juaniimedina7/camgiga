@@ -59,8 +59,9 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
 
         <div className="catalog">
           {/* FILTROS (colapsables en mobile; sidebar fijo en desktop) */}
-          <details className="filters">
-            <summary className="filters__summary">Filtrar{chips.length ? ` (${chips.length})` : ''}</summary>
+          <div className="filters">
+            <input type="checkbox" id="filtros-toggle" className="filters__toggle" />
+            <label htmlFor="filtros-toggle" className="filters__summary">Filtrar{chips.length ? ` (${chips.length})` : ''}</label>
             <form className="filters__body" action="/catalogo" method="get">
             <div className="filters__group">
               <label className="filters__label" htmlFor="f-q">Buscar</label>
@@ -97,7 +98,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
               <button className="btn btn--primary btn--block" type="submit">Aplicar filtros</button>
               {chips.length ? <Link className="btn btn--ghost btn--block mt-1" href="/catalogo">Limpiar filtros</Link> : null}
             </form>
-          </details>
+          </div>
 
           {/* RESULTADOS */}
           <div>
