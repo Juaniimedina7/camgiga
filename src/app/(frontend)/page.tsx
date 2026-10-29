@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getCategories, getProducts } from '../../lib/data'
+import { getCategories, getFacets, getProducts } from '../../lib/data'
 import { CategoryCard } from '../../components/CategoryCard'
 import { ProductCard } from '../../components/ProductCard'
 import { WhatsAppButton } from '../../components/WhatsAppButton'
@@ -12,13 +12,16 @@ import { CATEGORIAS_FALLBACK, MARCAS_DESTACADAS, RESENIAS, RESENIAS_RATING } fro
 export const revalidate = 300
 
 export default async function HomePage() {
-  const [categories, destacados, totalProductos] = await Promise.all([
+  const [categories, destacados, totalProductos, facets] = await Promise.all([
     getCategories(true).catch(() => []),
     getProducts({ destacado: true, limit: 8 }).then((r) => r.docs).catch(() => []),
     getProducts({ limit: 1 }).then((r) => r.totalDocs).catch(() => 0),
+    getFacets().catch(() => ({ categorias: new Set<string>(), marcas: new Set<string>(), camiones: new Set<string>() })),
   ])
 
-  const cats = categories.length ? categories : CATEGORIAS_FALLBACK
+  // Solo categorías con productos publicados (si la DB no responde, usa el fallback).
+  const conProductos = categories.filter((c) => c.slug && facets.categorias.has(c.slug))
+  const cats = categories.length ? conProductos : CATEGORIAS_FALLBACK
   const logos = MARCAS_DESTACADAS
   const estrellas = '★'.repeat(Math.round(RESENIAS_RATING.puntaje))
   // Conteo real redondeado hacia abajo (honesto, sin inventar).

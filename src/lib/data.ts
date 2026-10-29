@@ -78,6 +78,27 @@ export async function getProducts(filters: ProductFilters = {}) {
   return res
 }
 
+// Devuelve solo los valores que REALMENTE tienen productos publicados.
+// Así el filtro no ofrece categorías/marcas vacías; cuando se publica algo
+// nuevo (p. ej. una marca Fiat), aparece solo.
+export async function getFacets(): Promise<{
+  categorias: Set<string>
+  marcas: Set<string>
+  camiones: Set<string>
+}> {
+  const payload = await getClient()
+  const res = await payload.find({ collection: 'products', depth: 1, limit: 2000 })
+  const categorias = new Set<string>()
+  const marcas = new Set<string>()
+  const camiones = new Set<string>()
+  for (const p of res.docs) {
+    if (p.categoria && typeof p.categoria === 'object' && p.categoria.slug) categorias.add(p.categoria.slug)
+    if (p.marca && typeof p.marca === 'object' && p.marca.slug) marcas.add(p.marca.slug)
+    for (const m of p.marcasCamion ?? []) camiones.add(m)
+  }
+  return { categorias, marcas, camiones }
+}
+
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const payload = await getClient()
   const res = await payload.find({

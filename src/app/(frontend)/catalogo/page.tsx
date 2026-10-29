@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { getBrands, getCategories, getProducts } from '../../../lib/data'
+import { getBrands, getCategories, getFacets, getProducts } from '../../../lib/data'
 import { ProductCard } from '../../../components/ProductCard'
 import { WhatsAppButton } from '../../../components/WhatsAppButton'
 import { MARCAS_CAMION, TIPO_OPTIONS } from '../../../lib/constants'
@@ -25,14 +25,20 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
   const tipo = str(sp.tipo)
   const page = Math.max(1, parseInt(str(sp.page) || '1', 10) || 1)
 
-  const [categories, brands, result] = await Promise.all([
+  const [categories, brands, result, facets] = await Promise.all([
     getCategories().catch(() => []),
     getBrands().catch(() => []),
     getProducts({ q, categoria, marca, camion, tipo, page, limit: 24 }).catch(() => null),
+    getFacets().catch(() => ({ categorias: new Set<string>(), marcas: new Set<string>(), camiones: new Set<string>() })),
   ])
 
   const docs = result?.docs ?? []
   const total = result?.totalDocs ?? 0
+
+  // Solo ofrecer en los filtros lo que tiene productos publicados.
+  const catOptions = categories.filter((c) => c.slug && facets.categorias.has(c.slug))
+  const brandOptions = brands.filter((b) => b.slug && facets.marcas.has(b.slug))
+  const camionOptions = MARCAS_CAMION.filter((m) => facets.camiones.has(m))
 
   // Chips de filtros activos (con link para quitarlos)
   const chips: { label: string; param: string }[] = []
@@ -71,21 +77,21 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
               <label className="filters__label" htmlFor="f-cat">Categoría</label>
               <select id="f-cat" name="categoria" defaultValue={categoria}>
                 <option value="">Todas</option>
-                {categories.map((c) => <option key={c.id} value={c.slug || ''}>{c.nombre}</option>)}
+                {catOptions.map((c) => <option key={c.id} value={c.slug || ''}>{c.nombre}</option>)}
               </select>
             </div>
             <div className="filters__group">
               <label className="filters__label" htmlFor="f-marca">Marca de repuesto</label>
               <select id="f-marca" name="marca" defaultValue={marca}>
                 <option value="">Todas</option>
-                {brands.map((b) => <option key={b.id} value={b.slug || ''}>{b.nombre}</option>)}
+                {brandOptions.map((b) => <option key={b.id} value={b.slug || ''}>{b.nombre}</option>)}
               </select>
             </div>
             <div className="filters__group">
               <label className="filters__label" htmlFor="f-camion">Marca de camión</label>
               <select id="f-camion" name="camion" defaultValue={camion}>
                 <option value="">Todas</option>
-                {MARCAS_CAMION.map((m) => <option key={m} value={m}>{m}</option>)}
+                {camionOptions.map((m) => <option key={m} value={m}>{m}</option>)}
               </select>
             </div>
             <div className="filters__group">
