@@ -26,15 +26,15 @@ export function HeroKinetic({ hint }: { hint?: string }) {
     <section className="hv hv3">
       <div className="container">
         <h1 className="hv3__title">
-          La pieza<br />que <span className="hv3__mark">nadie</span><br />consiguió.
+          La pieza<br />que <span className="mark">nadie</span><br />consiguió.
         </h1>
         <p className="hv3__sub">
           Tren motriz para camiones, maquinaria agrícola y colectivos. 25 años, primeras marcas, envíos a todo el país.
         </p>
         <PartsFinder hint={hint} />
-      </div>
-      <div className="hv3__strip-full">
-        <HeroCarousel images={HERO_PHOTOS} interval={2800} className="hv3__car" />
+        <div className="hv3__strip">
+          <HeroCarousel images={HERO_PHOTOS} interval={2800} className="hv3__car" />
+        </div>
       </div>
     </section>
   )

@@ -14,8 +14,7 @@
 
 /* ---------- Hero V3 ---------- */
 .hv3 { background: #fff; color: var(--ink); padding-top: clamp(2.5rem, 2rem + 4vw, 4.5rem); overflow: hidden; }
-.hv3__title { color: var(--ink); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: 0.84; letter-spacing: -0.03em; font-size: clamp(3rem, 1.2rem + 11vw, 8.5rem); margin: 0 0 1.25rem; }
-.hv3__mark { background: var(--accent); color: #fff; padding: 0 0.12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hv3__title { color: var(--ink); font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: 0.94; letter-spacing: -0.03em; font-size: clamp(3rem, 1.2rem + 11vw, 8.5rem); margin: 0 0 1.25rem; }
 .hv3__sub { font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem); color: var(--ink-soft); max-width: 58ch; margin: 0 0 2rem; }
 @media (prefers-reduced-motion: no-preference) {
   .hv3__title { animation: hvUp 0.7s cubic-bezier(0.22,1,0.36,1) both; }
@@ -23,9 +22,9 @@
   .finder3 { animation: hvUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both; }
 }
 
-/* Tira de fotos a todo el ancho */
-.hv3__strip-full { margin-top: clamp(2rem, 1.5rem + 3vw, 3.5rem); }
-.hv3__car { aspect-ratio: 3 / 1; }
+/* Tira de fotos (contenida, con márgenes y bordes redondeados) */
+.hv3__strip { margin-top: clamp(2rem, 1.5rem + 3vw, 3rem); }
+.hv3__car { aspect-ratio: 16 / 9; border-radius: 18px; border: 1px solid var(--line); box-shadow: var(--shadow); }
 @media (max-width: 760px) { .hv3__car { aspect-ratio: 4 / 3; } }
 
 /* ---------- Buscador protagonista ---------- */

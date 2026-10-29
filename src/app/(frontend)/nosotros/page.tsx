@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { WhatsAppButton } from '../../../components/WhatsAppButton'
 import { SmartImg } from '../../../components/SmartImg'
+import { PageHero } from '../../../components/PageHero'
 import { brandLogo } from '../../../lib/preview'
 import { MARCAS_DESTACADAS } from '../../../lib/constants'
 
@@ -14,15 +15,10 @@ export const metadata: Metadata = {
 export default function NosotrosPage() {
   return (
     <>
-      <section className="hero">
-        <div className="container">
-          <h1>Más de 25 años consiguiendo la pieza que otros no tienen.</h1>
-          <p className="hero__sub">
-            CAMGIGA SRL es una empresa argentina especializada en tren motriz para camiones,
-            maquinaria agrícola y transporte de pasajeros.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title={<>Más de 25 años consiguiendo la pieza que <span className="mark">otros no tienen</span>.</>}
+        sub="CAMGIGA SRL es una empresa argentina especializada en tren motriz para camiones, maquinaria agrícola y transporte de pasajeros."
+      />
 
       <section className="section">
         <div className="container about">

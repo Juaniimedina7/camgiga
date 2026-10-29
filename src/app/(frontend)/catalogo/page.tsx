@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getBrands, getCategories, getFacets, getProducts } from '../../../lib/data'
 import { ProductCard } from '../../../components/ProductCard'
+import { PageHero } from '../../../components/PageHero'
 import { WhatsAppButton } from '../../../components/WhatsAppButton'
 import { MARCAS_CAMION, TIPO_OPTIONS } from '../../../lib/constants'
 
@@ -59,11 +60,10 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
   }
 
   return (
-    <section className="section">
+    <>
+      <PageHero title={<>Catálogo de <span className="mark">repuestos</span></>} sub="Filtrá por categoría, marca o modelo de camión. Consultá cualquier pieza por WhatsApp." />
+      <section className="section section--tight">
       <div className="container">
-        <h1>Catálogo de repuestos</h1>
-        <p className="lead mb-2">Filtrá por categoría, marca o modelo de camión. Consultá cualquier pieza por WhatsApp.</p>
-
         <div className="catalog">
           {/* FILTROS (colapsables en mobile; sidebar fijo en desktop) */}
           <div className="filters">
@@ -144,6 +144,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   )
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ContactForm } from '../../../components/ContactForm'
+import { PageHero } from '../../../components/PageHero'
 import { CONTACTO } from '../../../lib/constants'
 import { whatsappLink } from '../../../lib/whatsapp'
 import { PhoneIcon, WhatsAppIcon } from '../../../components/icons'
@@ -29,11 +30,10 @@ const jsonLd = {
 
 export default function ContactoPage() {
   return (
-    <section className="section">
+    <>
+      <PageHero title={<>Estamos para ayudarte a encontrar tu <span className="mark">repuesto</span>.</>} sub="Escribinos por WhatsApp, llamanos o dejanos tu consulta. Te respondemos rápido." />
+      <section className="section section--tight">
       <div className="container">
-        <h1>Estamos para ayudarte a encontrar tu repuesto.</h1>
-        <p className="lead mb-2">Escribinos por WhatsApp, llamanos o dejanos tu consulta. Te respondemos rápido.</p>
-
         <div className="contacto">
           <aside className="contacto__info">
             <div className="stack">
@@ -64,6 +64,7 @@ export default function ContactoPage() {
         </div>
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    </section>
+      </section>
+    </>
   )
 }
