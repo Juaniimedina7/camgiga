@@ -58,6 +58,7 @@ export async function getProducts(filters: ProductFilters = {}) {
         { nombre: { like: filters.q } },
         { codigo: { like: filters.q } },
         { numeroParte: { like: filters.q } },
+        { 'aplicacion.modelo': { like: filters.q } },
       ],
     })
   }

@@ -5,14 +5,9 @@ import { heroPreview } from '../../lib/preview'
 function PartsFinder({ hint }: { hint?: string }) {
   return (
     <div className="finder3">
-      <div className="finder3__tabs" aria-hidden="true">
-        <span className="finder3__tab is-on">Por camión</span>
-        <span className="finder3__tab">Por caja o diferencial</span>
-        <span className="finder3__tab">Por número de parte</span>
-      </div>
       <form className="finder3__bar" action="/catalogo" method="get" role="search">
         <SearchIcon className="finder3__icon" />
-        <input className="finder3__input" type="text" name="q" placeholder="Buscá por producto, código o modelo…" aria-label="Buscar repuesto" autoComplete="off" />
+        <input className="finder3__input" type="text" name="q" placeholder="Buscá por producto, código o modelo de camión…" aria-label="Buscar repuesto" autoComplete="off" />
         <button className="finder3__btn" type="submit">Buscar</button>
       </form>
       {hint ? <p className="finder3__hint">{hint}</p> : null}
