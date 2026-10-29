@@ -42,6 +42,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
 
   // Chips de filtros activos (con link para quitarlos)
   const chips: { label: string; param: string }[] = []
+  if (q) chips.push({ label: `“${q}”`, param: 'q' })
   if (categoria) chips.push({ label: categories.find((c) => c.slug === categoria)?.nombre || categoria, param: 'categoria' })
   if (marca) chips.push({ label: brands.find((b) => b.slug === marca)?.nombre || marca, param: 'marca' })
   if (camion) chips.push({ label: camion, param: 'camion' })
