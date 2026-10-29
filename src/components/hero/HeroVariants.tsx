@@ -1,5 +1,5 @@
-import { HeroCarousel, HERO_PHOTOS } from './HeroCarousel'
 import { SearchIcon } from '../icons'
+import { heroPreview } from '../../lib/preview'
 
 // Buscador protagonista (estilo editorial V3): tabs + barra con sombra offset.
 function PartsFinder({ hint }: { hint?: string }) {
@@ -33,7 +33,7 @@ export function HeroKinetic({ hint }: { hint?: string }) {
         </p>
         <PartsFinder hint={hint} />
         <div className="hv3__strip">
-          <HeroCarousel images={HERO_PHOTOS} interval={2800} className="hv3__car" />
+          <img className="hv3__img" src={heroPreview()} alt="Repuestos para camiones — CAMGIGA" />
         </div>
       </div>
     </section>
