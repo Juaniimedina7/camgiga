@@ -4,8 +4,10 @@ import { CategoryCard } from '../../components/CategoryCard'
 import { ProductCard } from '../../components/ProductCard'
 import { WhatsAppButton } from '../../components/WhatsAppButton'
 import { SmartImg } from '../../components/SmartImg'
-import { brandLogo, heroPreview } from '../../lib/preview'
+import { HeroKinetic } from '../../components/hero/HeroVariants'
+import { brandLogo } from '../../lib/preview'
 import { CATEGORIAS_FALLBACK, MARCAS_DESTACADAS, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
+import './heroes.css'
 
 // ISR: se renderiza una vez y se sirve cacheado desde el CDN.
 // Escala a cualquier cantidad de visitas sin golpear la base en cada request.
@@ -30,38 +32,9 @@ export default async function HomePage() {
   const countHint = rounded > 0 ? `+${rounded} repuestos en catálogo` : 'Amplio stock'
 
   return (
-    <>
-      {/* HERO — tesis: el eslogan de la empresa, grande y condensado */}
-      <section className="hero">
-        <img className="hero__photo" src={heroPreview()} alt="" aria-hidden="true" />
-        <div className="hero__bg" aria-hidden="true" />
-        <div className="hero__grain" aria-hidden="true" />
-        <div className="container hero__inner">
-          <h1 className="hero__title">
-            <span>Tenemos la pieza</span>
-            <span>que nadie</span>
-            <span className="hero__accent">consiguió.</span>
-          </h1>
-          <p className="hero__sub">
-            Cajas, diferenciales y embragues para camiones, maquinaria agrícola y colectivos.
-            Primeras marcas, amplio stock y envíos a todo el país.
-          </p>
-
-          {/* Buscador de repuestos */}
-          <div className="finder">
-            <div className="finder__tabs" aria-hidden="true">
-              <span className="finder__tab finder__tab--on">Por camión</span>
-              <span className="finder__tab">Por caja o diferencial</span>
-              <span className="finder__tab">Por número de parte</span>
-            </div>
-            <form className="finder__form" action="/catalogo" method="get" role="search">
-              <input className="finder__input" type="text" name="q" placeholder="Buscá: Eaton 4205, diferencial Meritor, embrague 430…" aria-label="Buscar repuesto" autoComplete="off" />
-              <button className="btn btn--primary btn--lg" type="submit">Buscar repuesto</button>
-            </form>
-            <p className="finder__hint">{countHint} · Consultá cualquiera por WhatsApp</p>
-          </div>
-        </div>
-      </section>
+    <div className="home-v3">
+      {/* HERO — V3 Editorial kinético */}
+      <HeroKinetic hint={`${countHint} · Consultá cualquiera por WhatsApp`} />
 
       {/* BANDA DE STOCK */}
       <section className="band">
@@ -124,7 +97,7 @@ export default async function HomePage() {
               <h2>Productos destacados</h2>
               <Link className="btn btn--outline" href="/catalogo">Ver todos</Link>
             </div>
-            <div className="grid grid--products">
+            <div className="dcar">
               {destacados.map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </div>
@@ -182,6 +155,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
