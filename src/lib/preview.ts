@@ -17,9 +17,9 @@ export function productPreview(seed: string): string {
   return `https://picsum.photos/seed/camp-${lock(seed)}/600/600`
 }
 
-// Foto real de camión en ruta (Unsplash) para el hero.
+// Imagen de fondo del hero (local).
 export function heroPreview(): string {
-  return 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=70'
+  return '/hero/hero.jpg'
 }
 
 // Logos locales (public/logos). Fallback a Clearbit para marcas sin archivo.
