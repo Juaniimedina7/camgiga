@@ -26,7 +26,7 @@ export function HeroKinetic({ hint }: { hint?: string }) {
           La pieza<br />que <span className="mark">nadie</span><br />consiguió.
         </h1>
         <p className="hv3__sub">
-          Tren motriz para camiones, maquinaria agrícola y colectivos. 25 años, primeras marcas, envíos a todo el país.
+          Repuestos para camiones, maquinaria agrícola y colectivos. 25 años, primeras marcas, envíos a todo el país.
         </p>
         <PartsFinder hint={hint} />
       </div>
