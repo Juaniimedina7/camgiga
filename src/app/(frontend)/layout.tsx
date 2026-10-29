@@ -6,6 +6,7 @@ import { Footer } from '../../components/Footer'
 import { WhatsAppFab } from '../../components/WhatsAppFab'
 import { ScrollReveal } from '../../components/ScrollReveal'
 import { RedirectToast } from '../../components/RedirectToast'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const display = Barlow_Semi_Condensed({
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppFab />
         <ScrollReveal />
         <RedirectToast />
+        <Analytics />
       </body>
     </html>
   )

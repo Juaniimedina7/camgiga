@@ -6,7 +6,8 @@
 
 /* ---------- Hero V3 (imagen de fondo con tinte azul) ---------- */
 .hv3 { position: relative; isolation: isolate; overflow: hidden; color: #fff; padding-block: clamp(3rem, 2rem + 6vw, 7rem) clamp(2.5rem, 2rem + 4vw, 5rem); }
-.hv3__photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.hv3__photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+@media (max-width: 760px) { .hv3__photo { object-position: 78% center; } }
 .hv3__overlay { position: absolute; inset: 0; z-index: -1; background:
   radial-gradient(120% 90% at 85% -10%, rgba(0,114,206,0.5), transparent 55%),
   linear-gradient(120deg, rgba(8,28,51,0.94) 0%, rgba(8,28,51,0.8) 55%, rgba(10,36,64,0.72) 100%); }
