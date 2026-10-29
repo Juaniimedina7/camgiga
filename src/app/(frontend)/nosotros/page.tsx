@@ -25,15 +25,20 @@ export default function NosotrosPage() {
       </section>
 
       <section className="section">
-        <div className="container stack" style={{ maxWidth: 760 }}>
-          <p>
-            Desde hace más de 25 años importamos, exportamos y distribuimos repuestos originales y
-            alternativos de las primeras marcas. Trabajamos para que los vehículos no paren.
-          </p>
-          <p>
-            Somos especialistas en cajas de velocidades, diferenciales y embragues, y cubrimos una
-            línea completa de repuestos para camiones y transporte. Amplio stock y envíos a todo el país.
-          </p>
+        <div className="container about">
+          <div>
+            <h2>Especialistas en tren motriz, hace más de 25 años.</h2>
+          </div>
+          <div className="stack">
+            <p>
+              Importamos, exportamos y distribuimos repuestos originales y alternativos de las
+              primeras marcas. Trabajamos para que los vehículos no paren.
+            </p>
+            <p>
+              Somos especialistas en cajas de velocidades, diferenciales y embragues, y cubrimos una
+              línea completa de repuestos para camiones y transporte. Amplio stock y envíos a todo el país.
+            </p>
+          </div>
         </div>
       </section>
 

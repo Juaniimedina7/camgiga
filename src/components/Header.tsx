@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { whatsappLink } from '../lib/whatsapp'
 import { WhatsAppIcon } from './icons'
 
@@ -12,6 +15,9 @@ const NAV = [
 
 export function Header() {
   const wa = whatsappLink()
+  const pathname = usePathname()
+  const isActive = (href: string) => href.startsWith('/') && !href.includes('#') && pathname === href
+
   return (
     <header className="header">
       <div className="container">
@@ -20,7 +26,9 @@ export function Header() {
 
           <nav className="header__nav">
             {NAV.map((n) => (
-              <Link key={n.href} href={n.href}>{n.label}</Link>
+              <Link key={n.href} href={n.href} aria-current={isActive(n.href) ? 'page' : undefined} className={isActive(n.href) ? 'is-active' : undefined}>
+                {n.label}
+              </Link>
             ))}
           </nav>
 
@@ -35,7 +43,7 @@ export function Header() {
               <summary className="header__menu-btn" aria-label="Abrir menú">☰</summary>
               <nav className="mobile-nav-panel">
                 {NAV.map((n) => (
-                  <Link key={n.href} href={n.href}>{n.label}</Link>
+                  <Link key={n.href} href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</Link>
                 ))}
               </nav>
             </details>

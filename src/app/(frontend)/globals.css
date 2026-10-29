@@ -138,8 +138,8 @@ img { max-width: 100%; display: block; }
   font-size: 0.82rem; font-weight: 600;
   padding: 0.2rem 0.6rem; border-radius: 999px;
 }
-.badge--ok { background: var(--ok-bg); color: var(--ok); }
-.badge--warn { background: var(--warn-bg); color: var(--warn); }
+.badge--ok { background: var(--ok-bg); color: #146c43; }
+.badge--warn { background: var(--warn-bg); color: #8a5300; }
 .badge--muted { background: var(--muted-bg); color: var(--muted); }
 .badge--tipo { background: var(--surface-alt); color: var(--ink-soft); }
 
@@ -378,7 +378,8 @@ img { max-width: 100%; display: block; }
 /* ---------- Quiénes somos ---------- */
 .about { display: grid; gap: 2rem; align-items: start; }
 @media (min-width: 900px) { .about { grid-template-columns: 1.4fr 1fr; gap: 3rem; } }
-.about__brands { border-left: 3px solid var(--accent); padding-left: 1.25rem; }
+.about__brands { padding-top: 0.25rem; }
+.about__brands-title { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; margin: 0 0 0.9rem; color: var(--ink); }
 
 /* ---------- Contador de números ---------- */
 .stats-band { background: var(--brand); color: #fff; padding-block: clamp(2rem, 1.5rem + 2vw, 3rem); }
@@ -425,6 +426,9 @@ img { max-width: 100%; display: block; }
   background: var(--accent); transition: right 0.25s ease;
 }
 .header__nav a:hover::after { right: 0; }
+.header__nav a.is-active { color: #fff; }
+.header__nav a.is-active::after { right: 0; }
+.mobile-nav-panel a[aria-current="page"] { color: #fff; }
 
 /* Zoom suave de imagen en tarjetas */
 .product-card__media img, .cat-card__img { transition: transform 0.4s ease, filter 0.3s ease; }
@@ -503,6 +507,42 @@ img { max-width: 100%; display: block; }
 .review-card__avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; flex: none; }
 .review-card__author { display: block; font-weight: 600; }
 .review-card__empresa { display: block; color: var(--ink-soft); font-size: 0.85rem; }
+
+/* ---------- Filtros colapsables en mobile (grilla primero) ---------- */
+.filters__summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  min-height: var(--tap); padding: 0 0.25rem; font-weight: 700; cursor: pointer; list-style: none;
+}
+.filters__summary::-webkit-details-marker { display: none; }
+.filters__summary::after { content: '▾'; color: var(--ink-soft); }
+.filters[open] .filters__summary::after { content: '▴'; }
+.filters__body { margin-top: 0.85rem; }
+@media (min-width: 900px) {
+  .filters__summary { display: none; }
+  .filters > .filters__body { display: block !important; margin-top: 0; }
+}
+
+/* ---------- Tap targets cómodos en el footer (mobile) ---------- */
+@media (max-width: 640px) {
+  .footer__grid a { display: inline-block; padding-block: 8px; }
+}
+
+/* ---------- Contacto (form + datos + mapa ancho) ---------- */
+.contacto { display: grid; gap: 24px; }
+@media (min-width: 900px) { .contacto { grid-template-columns: 0.9fr 1.1fr; align-items: start; } }
+.contacto__map { margin-top: 24px; aspect-ratio: 21/9; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.contacto__map iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (max-width: 700px) { .contacto__map { aspect-ratio: 4/3; } }
+
+/* ---------- Toast "redirigiendo a WhatsApp" ---------- */
+.redirect-toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 16px);
+  background: var(--ink); color: #fff; padding: 0.7rem 1.1rem; border-radius: 999px;
+  font-weight: 600; font-size: 0.95rem; box-shadow: var(--shadow-lg);
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 80; max-width: calc(100% - 32px); text-align: center;
+}
+.redirect-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }

@@ -51,13 +51,13 @@ export const CATEGORIAS_FALLBACK = [
 
 // Reseñas (placeholder — reemplazar por reales / link a Google cuando estén).
 export const RESENIAS = [
-  { autor: 'Hernán Gómez', empresa: 'Taller Gómez · San Justo', texto: 'Conseguí una caja Eaton que no encontraba en ningún lado. Me la mandaron al interior en dos días. Un lujo.' },
-  { autor: 'Transporte El Rayo', empresa: 'Flota · Córdoba', texto: 'Les compramos repuestos de diferencial para toda la flota. Siempre tienen stock y responden al toque por WhatsApp.' },
-  { autor: 'Marcelo Ríos', empresa: 'Mecánico · Lanús', texto: 'Precios acomodados y te asesoran bien. Si no tienen la pieza, te la consiguen. Hace años que les compro.' },
-  { autor: 'Repuestera del Sur', empresa: 'Casa de repuestos · La Plata', texto: 'Proveedores de confianza. Originales y alternativos, lo que necesites. Cumplen con los tiempos de entrega.' },
+  { autor: 'Hernán G.', empresa: 'Cliente', texto: 'Conseguí una caja Eaton que no encontraba en ningún lado y me la mandaron al interior en dos días. Un lujo de atención.' },
+  { autor: 'Rubén A.', empresa: 'Cliente', texto: 'Siempre tienen stock y responden al toque por WhatsApp. Compro repuestos de diferencial seguido y nunca fallan.' },
+  { autor: 'Diego M.', empresa: 'Cliente', texto: 'Precios acomodados y te asesoran bien. Si no tienen la pieza, te la consiguen. Hace años que les compro.' },
+  { autor: 'Laura S.', empresa: 'Cliente', texto: 'Proveedores de confianza. Originales y alternativos, lo que necesites, y cumplen con los tiempos de entrega.' },
 ] as const
 
-export const RESENIAS_RATING = { puntaje: 4.8, cantidad: 126 } as const
+export const RESENIAS_RATING = { puntaje: 4.8, cantidad: 48 } as const
 
 export const DISPONIBILIDAD_OPTIONS = [
   { label: 'En stock', value: 'en-stock' },

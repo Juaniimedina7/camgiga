@@ -34,12 +34,8 @@ export default function ContactoPage() {
         <h1>Estamos para ayudarte a encontrar tu repuesto.</h1>
         <p className="lead mb-2">Escribinos por WhatsApp, llamanos o dejanos tu consulta. Te respondemos rápido.</p>
 
-        <div className="catalog">
-          <div style={{ order: 2 }}>
-            <ContactForm />
-          </div>
-
-          <aside style={{ order: 1 }}>
+        <div className="contacto">
+          <aside className="contacto__info">
             <div className="stack">
               <a className="btn btn--wa btn--block btn--lg" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon className="wa-ic" /> WhatsApp {CONTACTO.whatsappMostrar}
@@ -50,17 +46,21 @@ export default function ContactoPage() {
               <p><b>Email:</b> <a href={`mailto:${CONTACTO.email}`}>{CONTACTO.email}</a></p>
               <p><b>Dirección:</b><br />{CONTACTO.direccion}</p>
               <p><b>Horarios:</b> Lunes a viernes de 8 a 17 hs · Sábados de 8 a 14 hs</p>
-              <div style={{ aspectRatio: '16/9', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid var(--line)' }}>
-                <iframe
-                  title="Ubicación de CAMGIGA"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(CONTACTO.direccion)}&output=embed`}
-                  style={{ border: 0, width: '100%', height: '100%' }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
             </div>
           </aside>
+
+          <div className="contacto__form">
+            <ContactForm />
+          </div>
+        </div>
+
+        <div className="contacto__map">
+          <iframe
+            title="Ubicación de CAMGIGA"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(CONTACTO.direccion)}&output=embed`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

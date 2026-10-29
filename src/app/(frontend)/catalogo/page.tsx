@@ -58,8 +58,10 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
         <p className="lead mb-2">Filtrá por categoría, marca o modelo de camión. Consultá cualquier pieza por WhatsApp.</p>
 
         <div className="catalog">
-          {/* FILTROS */}
-          <form className="filters" action="/catalogo" method="get">
+          {/* FILTROS (colapsables en mobile; sidebar fijo en desktop) */}
+          <details className="filters">
+            <summary className="filters__summary">Filtrar{chips.length ? ` (${chips.length})` : ''}</summary>
+            <form className="filters__body" action="/catalogo" method="get">
             <div className="filters__group">
               <label className="filters__label" htmlFor="f-q">Buscar</label>
               <input id="f-q" type="text" name="q" defaultValue={q} placeholder="Producto, código o N° parte" />
@@ -92,9 +94,10 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
                 {TIPO_OPTIONS.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
               </select>
             </div>
-            <button className="btn btn--primary btn--block" type="submit">Aplicar filtros</button>
-            {chips.length ? <Link className="btn btn--ghost btn--block mt-1" href="/catalogo">Limpiar</Link> : null}
-          </form>
+              <button className="btn btn--primary btn--block" type="submit">Aplicar filtros</button>
+              {chips.length ? <Link className="btn btn--ghost btn--block mt-1" href="/catalogo">Limpiar filtros</Link> : null}
+            </form>
+          </details>
 
           {/* RESULTADOS */}
           <div>

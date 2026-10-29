@@ -12,14 +12,19 @@ import { CATEGORIAS_FALLBACK, MARCAS_DESTACADAS, RESENIAS, RESENIAS_RATING } fro
 export const revalidate = 300
 
 export default async function HomePage() {
-  const [categories, destacados] = await Promise.all([
+  const [categories, destacados, totalProductos] = await Promise.all([
     getCategories(true).catch(() => []),
     getProducts({ destacado: true, limit: 8 }).then((r) => r.docs).catch(() => []),
+    getProducts({ limit: 1 }).then((r) => r.totalDocs).catch(() => 0),
   ])
 
   const cats = categories.length ? categories : CATEGORIAS_FALLBACK
   const logos = MARCAS_DESTACADAS
   const estrellas = '★'.repeat(Math.round(RESENIAS_RATING.puntaje))
+  // Conteo real redondeado hacia abajo (honesto, sin inventar).
+  const rounded = totalProductos >= 10 ? Math.floor(totalProductos / 10) * 10 : totalProductos
+  const countNum = rounded > 0 ? `${rounded}+` : 'Amplio'
+  const countHint = rounded > 0 ? `+${rounded} repuestos en catálogo` : 'Amplio stock'
 
   return (
     <>
@@ -29,7 +34,6 @@ export default async function HomePage() {
         <div className="hero__bg" aria-hidden="true" />
         <div className="hero__grain" aria-hidden="true" />
         <div className="container hero__inner">
-          <p className="hero__eyebrow"><span className="hero__dot" />Repuestos · 25 años · Lanús, Buenos Aires</p>
           <h1 className="hero__title">
             <span>Tenemos la pieza</span>
             <span>que nadie</span>
@@ -51,7 +55,7 @@ export default async function HomePage() {
               <input className="finder__input" type="text" name="q" placeholder="Buscá: Eaton 4205, diferencial Meritor, embrague 430…" aria-label="Buscar repuesto" autoComplete="off" />
               <button className="btn btn--primary btn--lg" type="submit">Buscar repuesto</button>
             </form>
-            <p className="finder__hint">+175 repuestos en catálogo · Consultá cualquiera por WhatsApp</p>
+            <p className="finder__hint">{countHint} · Consultá cualquiera por WhatsApp</p>
           </div>
         </div>
       </section>
@@ -86,7 +90,6 @@ export default async function HomePage() {
       <section className="section section--alt reveal" id="marcas">
         <div className="container about">
           <div>
-            <p className="eyebrow">Quiénes somos</p>
             <h2>Desde hace más de 25 años, sinónimo de confianza en repuestos.</h2>
             <p className="lead">
               Importamos y distribuimos repuestos originales y alternativos de las
@@ -98,7 +101,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="about__brands">
-            <p className="eyebrow">Trabajamos las primeras marcas</p>
+            <h3 className="about__brands-title">Trabajamos las primeras marcas</h3>
             <div className="logos">
               {logos.map((m) => (
                 <div key={m} className="logo-ph">
@@ -129,7 +132,7 @@ export default async function HomePage() {
       <section className="stats-band reveal">
         <div className="container stats">
           <div className="stat"><span className="stat__num">25+</span><span className="stat__label">Años de trayectoria</span></div>
-          <div className="stat"><span className="stat__num">175+</span><span className="stat__label">Repuestos en catálogo</span></div>
+          <div className="stat"><span className="stat__num">{countNum}</span><span className="stat__label">Repuestos en catálogo</span></div>
           <div className="stat"><span className="stat__num">100%</span><span className="stat__label">Primeras marcas</span></div>
           <div className="stat"><span className="stat__num">País</span><span className="stat__label">Envíos a todo el país</span></div>
         </div>
@@ -139,7 +142,6 @@ export default async function HomePage() {
       <section className="section section--alt reveal">
         <div className="container">
           <div className="reviews__header">
-            <p className="eyebrow" style={{ margin: 0 }}>Reseñas</p>
             <span className="reviews__score">{RESENIAS_RATING.puntaje.toFixed(1).replace('.', ',')}</span>
             <span className="stars stars--lg" aria-hidden="true">{estrellas}</span>
             <span className="reviews__meta">{RESENIAS_RATING.cantidad} reseñas de clientes de todo el país</span>

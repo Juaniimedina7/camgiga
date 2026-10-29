@@ -5,6 +5,7 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { WhatsAppFab } from '../../components/WhatsAppFab'
 import { ScrollReveal } from '../../components/ScrollReveal'
+import { RedirectToast } from '../../components/RedirectToast'
 import './globals.css'
 
 const display = Barlow_Semi_Condensed({
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppFab />
         <ScrollReveal />
+        <RedirectToast />
       </body>
     </html>
   )
