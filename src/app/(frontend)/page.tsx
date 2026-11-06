@@ -5,6 +5,7 @@ import { ProductCard } from '../../components/ProductCard'
 import { WhatsAppButton } from '../../components/WhatsAppButton'
 import { SmartImg } from '../../components/SmartImg'
 import { HeroKinetic } from '../../components/hero/HeroVariants'
+import { ProductBanners } from '../../components/ProductBanners'
 import { brandLogo } from '../../lib/preview'
 import { CATEGORIAS_FALLBACK, MARCAS_DESTACADAS, RESENIAS, RESENIAS_RATING } from '../../lib/constants'
 import './heroes.css'
@@ -88,6 +89,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* CARRUSEL DE BANNERS DE MARCAS */}
+      <ProductBanners />
 
       {/* DESTACADOS */}
       {destacados.length ? (

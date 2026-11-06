@@ -44,6 +44,39 @@
 .home-v3 .section > .container > .section__title h2,
 .home-v3 .about h2 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem); line-height: 1.02; }
 
+/* ---------- Carrusel de banners de marcas ---------- */
+@keyframes pbKen { from { transform: scale(1.005); } to { transform: scale(1.09); } }
+
+.pbanner { position: relative; border-radius: 22px; overflow: hidden; background: var(--brand); box-shadow: 0 24px 50px -28px rgba(8,28,51,0.65); outline: none; }
+.pbanner:focus-visible { box-shadow: 0 0 0 3px var(--accent), 0 24px 50px -28px rgba(8,28,51,0.65); }
+.pbanner__viewport { position: relative; width: 100%; aspect-ratio: 2079 / 756; }
+.pbanner__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.9s ease; will-change: opacity; }
+.pbanner__slide.is-active { opacity: 1; z-index: 1; }
+.pbanner__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .pbanner__slide.is-active .pbanner__img { animation: pbKen 6s ease-out both; }
+}
+
+/* Flechas */
+.pbanner__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 999px; background: rgba(255,255,255,0.9); color: var(--brand); cursor: pointer; opacity: 0; transition: opacity 0.2s ease, background 0.15s ease, transform 0.15s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+.pbanner:hover .pbanner__arrow, .pbanner:focus-within .pbanner__arrow { opacity: 1; }
+.pbanner__arrow:hover { background: #fff; }
+.pbanner__arrow--prev { left: 14px; }
+.pbanner__arrow--next { right: 14px; }
+.pbanner__arrow--prev:active { transform: translateY(-50%) translateX(-2px); }
+.pbanner__arrow--next:active { transform: translateY(-50%) translateX(2px); }
+
+/* Dots */
+.pbanner__dots { position: absolute; z-index: 3; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; gap: 8px; }
+.pbanner__dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.2s ease, width 0.2s ease; }
+.pbanner__dot:hover { background: rgba(255,255,255,0.8); }
+.pbanner__dot.is-on { width: 26px; background: var(--accent); }
+
+@media (max-width: 640px) {
+  .pbanner { border-radius: 16px; }
+  .pbanner__arrow { opacity: 1; width: 38px; height: 38px; background: rgba(255,255,255,0.82); }
+}
+
 /* Carrusel de destacados (swipe en mobile, fila en desktop) */
 .dcar { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 280px); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.75rem; margin-inline: -16px; padding-inline: 16px; scrollbar-width: thin; }
 .dcar > * { scroll-snap-align: start; }
